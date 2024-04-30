@@ -460,6 +460,10 @@ h2 { background: linear-gradient(90deg, #6dd5fd 0%, #77e8e3 100%); display: inli
 	.two > div { max-width: auto; }
 	.toc { display: block; }
 }
+@media (prefers-color-scheme: dark) {
+	:root { filter: invert(0.9) hue-rotate(180deg); }
+	img, embed, video, iframe { filter: hue-rotate(180deg) invert(1.1111111); }
+}
 		</style>
 	</head>
 	<body>
