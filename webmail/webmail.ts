@@ -3348,7 +3348,7 @@ const newMsgView = (miv: MsgitemView, msglistView: MsglistView, listMailboxes: l
 							attr.src('msg/'+m.ID+'/viewtext/'+pathStr)
 						) : (
 							isPDF(a) ?
-								dom.iframe(
+								dom.embed(
 									attr.title('Attachment as PDF.'),
 									attachmentsIframeStyle,
 									attr.src('msg/'+m.ID+'/view/'+pathStr)

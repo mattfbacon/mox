@@ -179,6 +179,7 @@ const [dom, style, attr, prop] = (function () {
 		ul: (...l) => _domKids(document.createElement('ul'), l),
 		li: (...l) => _domKids(document.createElement('li'), l),
 		iframe: (...l) => _domKids(document.createElement('iframe'), l),
+		embed: (...l) => _domKids(document.createElement('embed'), l),
 		b: (...l) => _domKids(document.createElement('b'), l),
 		img: (...l) => _domKids(document.createElement('img'), l),
 		style: (...l) => _domKids(document.createElement('style'), l),
@@ -3933,7 +3934,7 @@ const newMsgView = (miv, msglistView, listMailboxes, possibleLabels, messageLoad
 		}, css('attachmentsDownloadHeader', { backgroundColor: styles.popupBackgroundColor, color: styles.popupColor, boxShadow: styles.boxShadow, border: '1px solid', borderColor: styles.popupBorderColor, borderRadius: '.25em' }), a.Filename || '(unnamed)', ' - ', formatSize(a.Part.DecodedSize), ' - ', dom.a('Download', attr.download(''), attr.href('msg/' + m.ID + '/download/' + pathStr), function click(e) { e.stopPropagation(); }))), isImage(a) ?
 			dom.div(css('attachmentsImageBox', { flexGrow: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', maxHeight: 'calc(100% - 50px)', margin: '0 5em' }), dom.img(css('attachmentsImage', { maxWidth: '100%', maxHeight: '100%', boxShadow: styles.boxShadow, margin: '0 30px' }), attr.src('msg/' + m.ID + '/view/' + pathStr))) : (isText(a) ?
 			dom.iframe(attr.title('Attachment shown as text.'), attachmentsIframeStyle, attr.src('msg/' + m.ID + '/viewtext/' + pathStr)) : (isPDF(a) ?
-			dom.iframe(attr.title('Attachment as PDF.'), attachmentsIframeStyle, attr.src('msg/' + m.ID + '/view/' + pathStr)) :
+			dom.embed(attr.title('Attachment as PDF.'), attachmentsIframeStyle, attr.src('msg/' + m.ID + '/view/' + pathStr)) :
 			content = dom.div(function click(e) {
 				e.stopPropagation();
 			}, css('attachmentsBinary', { minWidth: '30em', padding: '2ex', boxShadow: styles.boxShadow, backgroundColor: styles.popupBackgroundColor, margin: '0 5em', textAlign: 'center' }), dom.div(style({ marginBottom: '2ex' }), 'Attachment could be a binary file.'), dom.clickbutton('View as text', function click() {
